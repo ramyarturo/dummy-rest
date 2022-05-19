@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: 'react_frontend-prod'
+    build:
+      dockerfile: Dockerfile-prod
+    ports:
+      - "443:443"
+  api:
+    env_file:
+      - .env.prod

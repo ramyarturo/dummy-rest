@@ -1,0 +1,16 @@
+
+version: '3.8'
+
+services:
+  frontend:
+    container_name: 'react_frontend-dev'
+    ports:
+      - "3000:80"
+    volumes:
+      - "./client:/app"
+      - "/app/node_modules"
+    environment:
+      NODE_ENV: development
+  api:
+    env_file:
+      - .env

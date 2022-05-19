@@ -1,0 +1,7 @@
+FROM gradle:7.2.0-jdk11-alpine as builder
+WORKDIR /app
+COPY . .
+RUN gradle build --no-daemon
+
+FROM gradle:7.2.0-jdk11-alpine
+COPY --from=builder /root/.gradle /root/.gradle

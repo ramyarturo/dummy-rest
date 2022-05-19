@@ -1,0 +1,16 @@
+
+/**/.idea
+api/.gradle
+api/gradle
+/**/build
+
+.env
+.env.prod
+
+client/node_modules
+client/nginx/certs
+client/.env
+client/package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
