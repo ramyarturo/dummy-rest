@@ -1,5 +1,6 @@
 package com.ramydev.plugins
 
+import com.ramydev.utils.Utils
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*
@@ -15,6 +16,8 @@ fun Application.configureHTTP() {
         }
     }
     install(CORS) {
-
+        if (!Utils.isProduction) {
+            anyHost()
+        }
     }
 }

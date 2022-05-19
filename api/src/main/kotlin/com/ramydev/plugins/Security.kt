@@ -3,8 +3,6 @@ package com.ramydev.plugins
 import com.ramydev.di.UserCredential
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 import io.ktor.util.*
 import org.koin.ktor.ext.get
 
@@ -24,15 +22,6 @@ fun Application.configureSecurity(userCredential: UserCredential = get()) {
         basic {
             validate { credentials ->
                 hashedUserTable.authenticate(credentials)
-            }
-        }
-    }
-
-    routing {
-        authenticate {
-            get("/protected") {
-                val principal = call.principal<UserIdPrincipal>()!!
-                call.respondText("Hello ${principal.name}")
             }
         }
     }

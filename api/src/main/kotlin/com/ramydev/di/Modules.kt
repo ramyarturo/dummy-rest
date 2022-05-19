@@ -1,5 +1,6 @@
 package com.ramydev.di
 
+import com.ramydev.repository.PostRepository
 import com.ramydev.repository.TodoRepository
 import com.ramydev.repository.UserRepository
 import com.ramydev.service.*
@@ -29,11 +30,13 @@ private val databaseModule = module {
 private val repositoryModule = module {
     single { UserRepository() }
     single { TodoRepository() }
+    single { PostRepository() }
 }
 private val servicesModule = module {
+    single<ResourceService> { ResourceServiceImpl(get()) }
     single<UserService> { UserServiceImpl(get()) }
     single<TodoService> { TodoServiceImpl(get()) }
-    single<ResourceService> { ResourceServiceImpl(get()) }
+    single<PostService> { PostServiceImpl(get()) }
 }
 
 val appDiModules = listOf(
